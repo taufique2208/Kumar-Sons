@@ -1,35 +1,57 @@
 import React from 'react'
+import 'bootstrap'
+import {Link} from 'react-router-dom'
 
 function Navbar() {
+    
   return (
     <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{backgroundColor:'white',height:'10vh',marginBottom:'0rem'}}>
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">Navbar</a>
+                <a className="navbar-brand brand" href="/">Kumar&Sons</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
+                <div className="collapse navbar-collapse" id="navbarNav" >
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="#">Home</a>
+                        <CustomLink className="nav-link active" aria-current="page" to="/">Home</CustomLink>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="#">Features</a>
+                        <CustomLink className="nav-link" to="/About">About Us</CustomLink>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="#">Pricing</a>
+                        <CustomLink className="nav-link" to="/Packages">Packages</CustomLink>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link disabled">Disabled</a>
+                        <CustomLink className="nav-link" to="/Rooms">Rooms</CustomLink>
+                        </li>
+                        <li className="nav-item">
+                        <CustomLink className="nav-link" to="/JoinUs">Join Us</CustomLink>
+                        </li>
+                        <li className="nav-item">
+                        <CustomLink className="nav-link" to="/Chat">Chat</CustomLink>
                         </li>
                     </ul>
+                    <div className='cute-cat'>
+                <img className='cute-cat-image' src="https://pluspng.com/img-png/kawaii-transparent-png-kawaii-kitty-i-by-riair-d41q2nj-png-501.png" /><img className='cute-cat-text' src='https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/49e67785781d14c.png' style={{visibility:'visible'}}></img></div>
                 </div>
             </div>
         </nav>
       
     </div>
   )
+}
+
+function CustomLink({to,children,...props}){
+    let path=window.location.pathname
+    return(
+        <li classname={path===to?'active':''}>
+            <Link to={to}{...props}>
+                {children}
+            </Link>
+        </li>
+    )
 }
 
 export default Navbar
